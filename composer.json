@@ -1,0 +1,30 @@
+{
+	"name": "coreplex/crumbs",
+	"description": "Framework agnostic breadcrumb container",
+	"keywords": ["image", "laravel"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Coreplex",
+			"email": "coreplex1@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"illuminate/support": ">=4.0",
+		"illuminate/http": ">=4.0"
+	},
+	"require-dev": {
+		"mockery/mockery": "0.9.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Coreplex\\Crumbs\\": "src/"
+		}
+	},
+	"extra": {
+		"component": "package",
+		"frameworks": ["Laravel 5"]
+	},
+	"minimum-stability": "dev"
+}

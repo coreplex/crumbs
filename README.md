@@ -1,4 +1,4 @@
-# crumbs
+# Crumbs
 Framework agnostic breadcrumb container
 
 The Container
@@ -35,15 +35,20 @@ $container->prepend('The Website', '/');
 Rendering The Breadcrumbs
 -------------------------
 
-The basic renderer provided will return a simple list-based navigation string. This can be invoked through the main container class by just calling the `render` method
+The basic renderer provided will return a simple list-based navigation string. This can be invoked through the main container class by just calling the `render` method.
 
 ```php
 $container->render();
+```
+
+The render method causes the last breadcrumb to be active by default. To disable this behaviour, pass false as the first parameter when calling render.
+
+```php
+$container->render(false);
 ```
 
 Planned Features
 ----------------
 
 - Laravel 4/5 Integration
-- Set last link as inactive by default
 - Travis integration

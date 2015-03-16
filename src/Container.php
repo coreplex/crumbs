@@ -30,6 +30,13 @@ class Container implements Contract {
     protected $crumbs;
 
     /**
+     * The collection of preparations to be run on the container
+     * 
+     * @var array $preparations
+     */
+    protected $preparations = [];
+
+    /**
      * Make a new crumbs instance
      * 
      * @return void
@@ -120,6 +127,8 @@ class Container implements Contract {
      */
     public function count()
     {
+        $this->build();
+
         return count($this->crumbs);
     }
 

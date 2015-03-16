@@ -42,6 +42,28 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
         $this->assertInstanceOf('Coreplex\Crumbs\Contracts\Crumb', $this->invokeMethod($container, 'newCrumb'));
     }
 
+    public function testPrepareMethodAddsToContainerAndCountsCrumbs()
+    {
+        $container = $this->makeContainer();
+
+        $container->prepare(function($crumbs)
+        {
+            $crumbs->append('Crumb 1', '//www.google.com');
+            $crumbs->append('Crumb 2', '//www.yahoo.com');
+        });
+
+        $this->assertEquals($container->count(), 2);
+    }
+
+    public function testInvokesRendererAndReturnsValidString()
+    {
+        $container = $this->makeContainer();
+
+        $container->append('Crumb 1', '//www.google.com');
+
+        $this->assertNotEmpty($container->render());
+    }
+
     public function makeContainer()
     {
         return new Container(new Crumb, new BasicRenderer);

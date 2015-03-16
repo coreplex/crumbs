@@ -27,7 +27,7 @@ class CrumbsTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
 
-    public function testContainerInstantiatesWithDependencies()
+    public function testContainerInstantiatesWithDependenciesAndMakesCrumbs()
     {
         $container = new Crumbs(new Crumb);
 

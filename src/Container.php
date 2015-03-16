@@ -3,13 +3,14 @@
 use Closure;
 use Coreplex\Crumbs\Components\Crumb;
 use Coreplex\Crumbs\Contracts\Crumb as CrumbContract;
+use Coreplex\Crumbs\Contracts\Container as Contract;
 
-class Container {
+class Container implements Contract {
 
     /**
      * The collection of breadcrumbs
      * 
-     * @var Illuminate\Support\Collection $crumbs
+     * @var array $crumbs
      */
     protected $crumbs;
 
@@ -32,13 +33,41 @@ class Container {
      * @param string $url
      * @param array $data
      */
-    public function add($label, $url, $position = 'end')
+    public function add($label, $url, $atEnd = true)
     {
         $crumb = $this->newCrumb();
         $crumb->setLabel($label);
         $crumb->setUrl($url);
 
-        array_push($this->crumbs, $crumb);
+        if ($atEnd) {
+            array_push($this->crumbs, $crumb);
+        } else {
+            array_unshift($this->crumbs, $crumb);
+        }
+    }
+
+    /**
+     * Appends a new crumb to the container
+     * 
+     * @param  string $label
+     * @param  string $url
+     * @return void
+     */
+    public function append($label, $url)
+    {
+        $this->add($label, $url, true);
+    }
+
+    /**
+     * Prepends a new crumb to the container
+     * 
+     * @param  string $label
+     * @param  string $url
+     * @return void
+     */
+    public function prepend($label, $url)
+    {
+        $this->add($label, $url, true);
     }
 
     /**
@@ -52,6 +81,36 @@ class Container {
         $this->addPreparation($closure);
 
         return $this;
+    }
+
+    /**
+     * Return all crumbs
+     * 
+     * @return array
+     */
+    public function getCrumbs()
+    {
+        return $this->crumbs;
+    }
+
+    /**
+     * Return how many crumbs are in the container
+     * 
+     * @return integer
+     */
+    public function count()
+    {
+        return count($this->crumbs);
+    }
+
+    /**
+     * Render the breadcrumbs
+     * 
+     * @return string
+     */
+    public function render()
+    {
+        return "";
     }
 
     /**

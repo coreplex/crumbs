@@ -20,7 +20,7 @@ class Container {
      */
     public function construct(CrumbContract $crumb)
     {
-        $this->crumbs = new Illuminate\Support\Collection;
+        $this->crumbs = [];
 
         $this->crumb = $crumb;
     }
@@ -38,7 +38,7 @@ class Container {
         $crumb->setLabel($label);
         $crumb->setUrl($url);
 
-        $this->crumbs->push($crumb);
+        array_push($this->crumbs, $crumb);
     }
 
     /**

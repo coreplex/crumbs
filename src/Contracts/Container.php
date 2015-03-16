@@ -56,9 +56,9 @@ interface Container {
     /**
      * Render the breadcrumbs
      *
-     * @param  $lastLinkIsCurrent boolean
+     * @param  $makeLastCrumbCurrent boolean
      * @return string
      */
-    public function render($lastLinkIsCurrent = true);
+    public function render($makeLastCrumbCurrent = true);
 
 }

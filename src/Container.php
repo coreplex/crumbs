@@ -137,12 +137,12 @@ class Container implements Contract {
      * 
      * @return string
      */
-    public function render($lastLinkIsCurrent = true)
+    public function render($makeLastCrumbCurrent = true)
     {
         // Run any preparations before render
         $this->build();
 
-        if ($this->count() > 0 && $lastLinkIsCurrent) {
+        if ($this->count() > 0 && $makeLastCrumbCurrent) {
             $lastCrumb = array_pop($this->crumbs);
 
             $lastCrumb->setCurrent();

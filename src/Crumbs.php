@@ -1,6 +1,8 @@
 <?php namespace Coreplex\Crumbs;
 
 use Closure;
+use Coreplex\Crumbs\Components\Crumb;
+use Coreplex\Crumbs\Contracts\Crumb as CrumbContract;
 
 class Crumbs {
 
@@ -16,9 +18,27 @@ class Crumbs {
      * 
      * @return void
      */
-    public function construct()
+    public function construct(CrumbContract $crumb)
     {
         $this->crumbs = new Illuminate\Support\Collection;
+
+        $this->crumb = $crumb;
+    }
+
+    /**
+     * Add a new crumb
+     * 
+     * @param string $label
+     * @param string $url
+     * @param array $data
+     */
+    public function add($label, $url, $position = 'end')
+    {
+        $crumb = $this->newCrumb();
+        $crumb->setLabel($label);
+        $crumb->setUrl($url);
+
+        $this->crumbs->push($crumb);
     }
 
     /**
@@ -32,6 +52,16 @@ class Crumbs {
         $this->addPreparation($closure);
 
         return $this;
+    }
+
+    /**
+     * Instantiates a new crumb
+     * 
+     * @return Coreplex\Crumbs\Contracts\Crumb;
+     */
+    protected function newCrumb()
+    {
+        return new $this->crumb;
     }
 
     protected function build()

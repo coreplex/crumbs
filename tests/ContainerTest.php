@@ -1,11 +1,11 @@
 <?php namespace Coreplex\Crumbs\Tests;
 
 use Mockery as m;
-use Coreplex\Crumbs\Crumbs;
+use Coreplex\Crumbs\Container;
 use PHPUnit_Framework_TestCase;
 use Coreplex\Crumbs\Components\Crumb as Crumb;
 
-class CrumbsTest extends PHPUnit_Framework_TestCase {
+class ContainerTest extends PHPUnit_Framework_TestCase {
 
     /**
      * Setup resources and dependencies.
@@ -29,7 +29,7 @@ class CrumbsTest extends PHPUnit_Framework_TestCase {
 
     public function testContainerInstantiatesWithDependenciesAndMakesCrumbs()
     {
-        $container = new Crumbs(new Crumb);
+        $container = new Container(new Crumb);
 
         $this->assertInstanceOf('Coreplex\Crumbs\Contracts\Crumb', $this->invokeMethod($container, 'newCrumb'));
     }

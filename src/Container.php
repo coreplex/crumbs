@@ -4,7 +4,7 @@ use Closure;
 use Coreplex\Crumbs\Components\Crumb;
 use Coreplex\Crumbs\Contracts\Crumb as CrumbContract;
 
-class Crumbs {
+class Container {
 
     /**
      * The collection of breadcrumbs

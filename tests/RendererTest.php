@@ -28,6 +28,17 @@ class RendererTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
 
+    public function testRendererOutputsNonEmptyString()
+    {
+        $container = $this->makeContainer();
+
+        $container->append('Google', '//www.google.com');
+
+        $renderer = new BasicRenderer;
+
+        $this->assertNotEmpty($renderer->render($container));
+    }
+
     public function makeContainer()
     {
         return new Container(new Crumb, new BasicRenderer);

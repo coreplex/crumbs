@@ -34,7 +34,7 @@ class Container implements Contract {
      * 
      * @return void
      */
-    public function construct(CrumbContract $crumb, RendererContract $renderer)
+    public function __construct(CrumbContract $crumb, RendererContract $renderer)
     {
         $this->crumbs = [];
 
@@ -107,6 +107,9 @@ class Container implements Contract {
      */
     public function getCrumbs()
     {
+        // Run any preparations before retrieving the crumbs
+        $this->build();
+
         return $this->crumbs;
     }
 
@@ -127,6 +130,9 @@ class Container implements Contract {
      */
     public function render()
     {
+        // Run any preparations before render
+        $this->build();
+
         return $this->renderer->render($this);
     }
 
@@ -142,8 +148,9 @@ class Container implements Contract {
 
     protected function build()
     {
-        foreach ($this->getPreparations() as $preparation) {
+        foreach ($this->getPreparations() as &$preparation) {
             $preparation($this);
+            unset($preparation);
         }
     }
 

@@ -1,5 +1,7 @@
 <?php namespace Coreplex\Crumbs\Contracts;
 
+use Closure;
+
 interface Container {
 
 	/**

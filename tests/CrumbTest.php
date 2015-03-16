@@ -1,7 +1,7 @@
 <?php namespace Coreplex\Crumbs\Tests;
 
 use Mockery as m;
-use Coreplex\Crumbs\Components\Crumbs;
+use Coreplex\Crumbs\Components\Crumb;
 use Coreplex\Crumbs\Contracts\Crumbs as Contract;
 use PHPUnit_Framework_TestCase;
 
@@ -52,7 +52,7 @@ class CrumbsTest extends PHPUnit_Framework_TestCase {
 
         $crumb->setUrl($url);
 
-        $this->assertEquals($crumb->getUrl(), $label);
+        $this->assertEquals($crumb->getUrl(), $url);
     }
 
     public function testCrumbSetsCurrentAndNotCurrent()

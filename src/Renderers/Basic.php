@@ -1,6 +1,6 @@
 <?php namespace Coreplex\Crumbs\Renderers;
 
-use Coreplex\Crumbs\Contracts\Renderer;
+use Coreplex\Crumbs\Contracts\Renderer as Contract;
 use Coreplex\Crumbs\Contracts\Container;
 
 class Basic implements Contract {
@@ -21,7 +21,7 @@ class Basic implements Contract {
                 $rendered .= '<li>';
 
                 if ( ! $crumb->isCurrent()) {
-                    $rendered .= '<a href="' . $crumb->getUrl() . '">'
+                    $rendered .= '<a href="' . $crumb->getUrl() . '">';
                 }
 
                 $rendered .= $crumb->getLabel();

@@ -3,9 +3,24 @@
 use Closure;
 use Coreplex\Crumbs\Components\Crumb;
 use Coreplex\Crumbs\Contracts\Crumb as CrumbContract;
+use Coreplex\Crumbs\Contracts\Renderer as RendererContract;
 use Coreplex\Crumbs\Contracts\Container as Contract;
 
 class Container implements Contract {
+
+    /**
+     * The crumb implementation
+     * 
+     * @var Coreplex\Crumbs\Contracts\Crumb $crumb
+     */
+    protected $crumb;
+
+    /**
+     * The renderer implementation
+     * 
+     * @var Coreplex\Crumbs\Contracts\Renderer $renderer
+     */
+    protected $renderer;
 
     /**
      * The collection of breadcrumbs
@@ -19,11 +34,13 @@ class Container implements Contract {
      * 
      * @return void
      */
-    public function construct(CrumbContract $crumb)
+    public function construct(CrumbContract $crumb, RendererContract $renderer)
     {
         $this->crumbs = [];
 
         $this->crumb = $crumb;
+
+        $this->renderer = $renderer;
     }
 
     /**
@@ -110,7 +127,7 @@ class Container implements Contract {
      */
     public function render()
     {
-        return "";
+        return $this->renderer->render($this);
     }
 
     /**

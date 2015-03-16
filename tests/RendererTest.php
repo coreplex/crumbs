@@ -1,12 +1,12 @@
 <?php namespace Coreplex\Crumbs\Tests;
 
 use Mockery as m;
-use Coreplex\Crumbs\Container;
 use PHPUnit_Framework_TestCase;
+use Coreplex\Crumbs\Container;
 use Coreplex\Crumbs\Components\Crumb as Crumb;
 use Coreplex\Crumbs\Renderers\Basic as BasicRenderer;
 
-class ContainerTest extends PHPUnit_Framework_TestCase {
+class RendererTest extends PHPUnit_Framework_TestCase {
 
     /**
      * Setup resources and dependencies.
@@ -26,20 +26,6 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
     public function tearDown()
     {
         m::close();
-    }
-
-    public function testContainerAbidesContract()
-    {
-        $container = $this->makeContainer();
-
-        $this->assertInstanceOf('Coreplex\Crumbs\Contracts\Container', $container);
-    }
-
-    public function testContainerInstantiatesWithDependenciesAndMakesCrumbs()
-    {
-        $container = $this->makeContainer();
-
-        $this->assertInstanceOf('Coreplex\Crumbs\Contracts\Crumb', $this->invokeMethod($container, 'newCrumb'));
     }
 
     public function makeContainer()

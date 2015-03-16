@@ -33,7 +33,7 @@ class Crumb implements Contract {
      */
     public function getLabel()
     {
-        throw new Exception("Method not implemented");
+        return $this->label;
     }
 
     /**
@@ -43,7 +43,7 @@ class Crumb implements Contract {
      */
     public function getUrl()
     {
-        throw new Exception("Method not implemented");
+        return $this->url;
     }
 
     /**
@@ -54,7 +54,7 @@ class Crumb implements Contract {
      */
     public function setLabel($label)
     {
-        throw new Exception("Method not implemented");
+        $this->label = $label;
     }
 
     /**
@@ -65,7 +65,7 @@ class Crumb implements Contract {
      */
     public function setUrl($url)
     {
-        throw new Exception("Method not implemented");
+        $this->url = $url;
     }
 
     /**
@@ -75,7 +75,7 @@ class Crumb implements Contract {
      */
     public function isCurrent()
     {
-        throw new Exception("Method not implemented");
+        return $this->current;
     }
 
     /**
@@ -85,7 +85,7 @@ class Crumb implements Contract {
      */
     public function setCurrent()
     {
-        throw new Exception("Method not implemented");
+        $this->current = true;
     }
 
     /**
@@ -95,7 +95,7 @@ class Crumb implements Contract {
      */
     public function setNotCurrent()
     {
-        throw new Exception("Method not implemented");
+        $this->current = false;
     }
 
 }

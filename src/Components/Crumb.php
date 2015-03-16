@@ -37,6 +37,16 @@ class Crumb implements Contract {
     }
 
     /**
+     * Whether or not this breadcrumb has a label
+     * 
+     * @return boolean
+     */
+    public function hasLabel()
+    {
+        return ! empty($this->getLabel());
+    }
+
+    /**
      * Retrieve the breadcrumb URL
      * 
      * @return string
@@ -44,6 +54,16 @@ class Crumb implements Contract {
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Whether or not this breadcrumb has a URL
+     * 
+     * @return boolean
+     */
+    public function hasUrl()
+    {
+        return ! empty($this->getUrl());
     }
 
     /**

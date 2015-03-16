@@ -64,6 +64,19 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
         $this->assertNotEmpty($container->render());
     }
 
+    public function testContainerWillPrependBreadcrumbAndGetInCorrectOrder()
+    {
+        $container = $this->makeContainer();
+
+        $container->append('Crumb 1', '//www.google.com');
+        $container->prepend('Crumb 0', '//www.yahoo.com');
+
+        $firstCrumb = array_shift($container->getCrumbs());
+
+        $this->assertEquals($firstCrumb->getLabel(), 'Crumb 0');
+        $this->assertEquals($firstCrumb->getUrl(), '//www.yahoo.com');
+    }
+
     public function makeContainer()
     {
         return new Container(new Crumb, new BasicRenderer);

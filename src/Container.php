@@ -91,7 +91,7 @@ class Container implements Contract {
      */
     public function prepend($label, $url)
     {
-        $this->add($label, $url, true);
+        $this->add($label, $url, false);
     }
 
     /**

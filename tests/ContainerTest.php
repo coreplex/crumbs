@@ -77,6 +77,38 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($firstCrumb->getUrl(), '//www.yahoo.com');
     }
 
+    public function testRenderFunctionCausesLastCrumbToCurrentByDefault()
+    {
+        $container = $this->makeContainer();
+
+        $container->append('Crumb 1', '//www.google.com');
+        $container->append('Crumb 0', '//www.yahoo.com');
+
+        $container->render();
+
+        foreach ($container->getCrumbs() as $crumb) {
+            if ($crumb->getUrl() == "//www.yahoo.com") {
+                $this->assertTrue($crumb->isCurrent());
+            }
+        }
+    }
+
+    public function testRenderFunctionCanBeModifiedToNotSetLastAsCurrent()
+    {
+        $container = $this->makeContainer();
+
+        $container->append('Crumb 1', '//www.google.com');
+        $container->append('Crumb 0', '//www.yahoo.com');
+
+        $container->render(false);
+
+        foreach ($container->getCrumbs() as $crumb) {
+            if ($crumb->getUrl() == "//www.yahoo.com") {
+                $this->assertFalse($crumb->isCurrent());
+            }
+        }
+    }
+
     public function makeContainer()
     {
         return new Container(new Crumb, new BasicRenderer);

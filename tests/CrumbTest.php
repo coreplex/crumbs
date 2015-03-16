@@ -62,9 +62,30 @@ class CrumbsTest extends PHPUnit_Framework_TestCase {
         $crumb->setCurrent();
         $this->assertTrue($crumb->isCurrent());
 
-
         $crumb->setNotCurrent();
         $this->assertFalse($crumb->isCurrent());
+    }
+
+    public function testCrumbAccuratelyReportsWhetherItHasUrlOrNot()
+    {
+        $crumb = $this->makeCrumb();
+
+        $this->assertFalse($crumb->hasUrl());
+        $crumb->setUrl('//www.google.com');
+        $this->assertTrue($crumb->hasUrl());
+        $crumb->setUrl('');
+        $this->assertFalse($crumb->hasUrl());
+    }
+
+    public function testCrumbAccuratelyReportsWhetherItHasLabelOrNot()
+    {
+        $crumb = $this->makeCrumb();
+
+        $this->assertFalse($crumb->hasLabel());
+        $crumb->setLabel('Google');
+        $this->assertTrue($crumb->hasLabel());
+        $crumb->setLabel('');
+        $this->assertFalse($crumb->hasLabel());
     }
 
     public function makeCrumb()

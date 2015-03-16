@@ -18,7 +18,7 @@ class Basic implements Contract {
             $rendered .= '<ul>';
 
             foreach ($container->getCrumbs() as $crumb) {
-                $rendered .= '<li>';
+                $rendered .= $crumb->isCurrent() ? '<li class="active">' : '<li>';
 
                 if ( ! $crumb->isCurrent() && $crumb->hasUrl()) {
                     $rendered .= '<a href="' . $crumb->getUrl() . '">';

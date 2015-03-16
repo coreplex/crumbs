@@ -27,11 +27,23 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
 
+    public function testContainerAbidesContract()
+    {
+        $container = $this->makeContainer();
+
+        $this->assertInstanceOf('Coreplex\Crumbs\Contracts\Container', $container);
+    }
+
     public function testContainerInstantiatesWithDependenciesAndMakesCrumbs()
     {
-        $container = new Container(new Crumb);
+        $container = $this->makeContainer();
 
         $this->assertInstanceOf('Coreplex\Crumbs\Contracts\Crumb', $this->invokeMethod($container, 'newCrumb'));
+    }
+
+    public function makeContainer()
+    {
+        return new Container(new Crumb);
     }
 
     /**

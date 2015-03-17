@@ -170,7 +170,7 @@ class Container implements Contract {
      */
     protected function build()
     {
-        foreach ($this->getPreparations() as $key => $preparation) {
+        foreach ($this->preparations as $key => $preparation) {
             $preparation($this);
             unset($this->preparations[$key]);
         }

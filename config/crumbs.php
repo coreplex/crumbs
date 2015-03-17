@@ -8,7 +8,7 @@
 	/**
 	 * The renderer implementation
 	 */
-	'renderer' => 'Coreplex\Crumbs\Renderers\Renderer',
+	'renderer' => 'Coreplex\Crumbs\Renderers\Basic',
 
 	/**
 	 * The container implementation

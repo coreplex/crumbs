@@ -61,7 +61,7 @@ class CrumbsServiceProvider extends ServiceProvider {
      */
     public function loadViews()
     {
-        $this->loadViewsFrom(__DIR__.'/views', 'crumbs');
+        $this->loadViewsFrom(__DIR__.'/../views', 'crumbs');
     }
 
     /**

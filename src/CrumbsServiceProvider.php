@@ -26,6 +26,10 @@ class CrumbsServiceProvider extends ServiceProvider {
     public function boot()
     {
         $this->package('coreplex/crumbs', 'coreplex/crumbs');
+
+        $this->publishConfig();
+
+        $this->loadViews();
     }
 
     /**
@@ -35,14 +39,13 @@ class CrumbsServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        // $this->publishConfig();
         $this->registerRenderer();
         $this->registerCrumb();
         $this->registerContainer();
     }
 
     /**
-     * Publishes the config
+     * Publishes the config used by crumbs.
      * 
      * @return void
      */
@@ -54,6 +57,16 @@ class CrumbsServiceProvider extends ServiceProvider {
     }
 
     /**
+     * Sets the namespace for the views used by crumbs.
+     * 
+     * @return void
+     */
+    public function loadViews()
+    {
+        $this->loadViewsFrom(__DIR__.'/views', 'crumbs');
+    }
+
+    /**
      * Register the renderer used by Crumbs.
      * 
      * @return void
@@ -62,7 +75,7 @@ class CrumbsServiceProvider extends ServiceProvider {
     {
         $this->app['Coreplex\Crumbs\Contracts\Renderer'] = $this->app->share(function($app)
         {
-            return new $app['config']['crumbs']['renderer'];
+            return (new ReflectionClass($app['config']['crumbs']['renderer']))->newInstanceArgs([$app['view']]);
         });
     }
 

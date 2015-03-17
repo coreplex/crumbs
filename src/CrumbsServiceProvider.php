@@ -25,8 +25,6 @@ class CrumbsServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('coreplex/crumbs', 'coreplex/crumbs');
-
         $this->publishConfig();
 
         $this->loadViews();

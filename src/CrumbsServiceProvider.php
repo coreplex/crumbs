@@ -87,7 +87,8 @@ class CrumbsServiceProvider extends ServiceProvider {
     {
         $this->app['Coreplex\Crumbs\Contracts\Container'] = $this->app->share(function($app)
         {
-            return new $app['config']->get('crumbs.container')($app['Coreplex\Crumbs\Contracts\Crumb'], $app['Coreplex\Crumbs\Contracts\Renderer']);
+            $args = [$app['Coreplex\Crumbs\Contracts\Crumb'], $app['Coreplex\Crumbs\Contracts\Renderer']];
+            return (new ReflectionClass($class))->newInstanceArgs($args);
         });
     }
 

@@ -1,4 +1,4 @@
-<?php return array(
+<?php return [
 
 	/**
 	 * The crumb implementation
@@ -15,4 +15,4 @@
 	 */
 	'container' => 'Coreplex\Crumbs\Container',
 
-);
+];

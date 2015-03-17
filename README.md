@@ -8,7 +8,7 @@ To install Crumbs via composer, simply add it to your composer.json file
 
 ```json
 "require": {
-    "coreplex/crumbs": "0.9.*"
+    "coreplex/crumbs": "1.0.*"
 },
 ```
 

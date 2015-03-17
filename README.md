@@ -96,7 +96,7 @@ A facade is also provided to those who would opt using this over dependency inje
 ```php
 'aliases' => [
 
-    'Crumbs'    => 'Coreplex\Crumbs\Facades\Crumbs',
+    'Crumbs' => 'Coreplex\Crumbs\Facades\Crumbs',
 
 ],
 ```

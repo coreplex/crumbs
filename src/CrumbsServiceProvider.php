@@ -6,6 +6,7 @@ use Coreplex\Crumbs\Renderer\Basic as BasicRenderer;
 use Coreplex\Crumbs\Contracts\Container as ContainerContract;
 use Coreplex\Crumbs\Contracts\Renderer as RendererContract;
 use Coreplex\Crumbs\Contracts\Crumb as CrumbContract;
+use ReflectionClass;
 use Illuminate\Support\ServiceProvider;
 
 class CrumbsServiceProvider extends ServiceProvider {

@@ -43,7 +43,9 @@ class Crumb implements Contract {
      */
     public function hasLabel()
     {
-        return ! empty($this->getLabel());
+        $label = $this->getLabel();
+
+        return ! empty($label);
     }
 
     /**
@@ -63,7 +65,9 @@ class Crumb implements Contract {
      */
     public function hasUrl()
     {
-        return ! empty($this->getUrl());
+        $url = $this->getUrl();
+
+        return ! empty($url);
     }
 
     /**

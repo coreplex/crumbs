@@ -18,6 +18,6 @@
 	/**
 	 * Which view to use for the laravel blade renderer
 	 */
-	'container' => 'crumbs::bootstrap3',
+	'view' => 'crumbs::bootstrap3',
 
 ];

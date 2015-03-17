@@ -50,7 +50,7 @@ class CrumbsServiceProvider extends ServiceProvider {
     public function publishConfig()
     {
         $this->publishes([
-            __DIR__.'/config/crumbs.php' => config_path('crumbs.php'),
+            __DIR__.'/../config/crumbs.php' => config_path('crumbs.php'),
         ]);
     }
 

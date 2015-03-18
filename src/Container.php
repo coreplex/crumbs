@@ -57,7 +57,7 @@ class Container implements Contract {
      * @param string $url
      * @param array $data
      */
-    public function add($label, $url, $atEnd = true)
+    public function add($label = "", $url = "", $atEnd = true)
     {
         $crumb = $this->newCrumb();
         $crumb->setLabel($label);
@@ -79,7 +79,7 @@ class Container implements Contract {
      * @param  string $url
      * @return void
      */
-    public function append($label, $url)
+    public function append($label = "", $url = "")
     {
         $this->add($label, $url, true);
 
@@ -93,7 +93,7 @@ class Container implements Contract {
      * @param  string $url
      * @return void
      */
-    public function prepend($label, $url)
+    public function prepend($label = "", $url = "")
     {
         $this->add($label, $url, false);
 

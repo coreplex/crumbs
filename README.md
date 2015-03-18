@@ -125,4 +125,3 @@ Planned Features
 ----------------
 
 - Laravel 4 Integration
-- Travis hooks

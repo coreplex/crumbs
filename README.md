@@ -1,4 +1,4 @@
-# Crumbs
+# Crumbs [![Build Status](https://travis-ci.org/coreplex/crumbs.svg?branch=master)](https://travis-ci.org/coreplex/crumbs)
 Framework agnostic breadcrumb container
 
 Installation via composer

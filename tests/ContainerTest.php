@@ -111,6 +111,33 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
         }
     }
 
+    public function testContainerFunctionsCanBeChained()
+    {
+        $container = $this->makeContainer();
+
+        $container->append('Crumb 3')
+                  ->prepend('Crumb 2')
+                  ->add('Crumb 4', null, true)
+                  ->add('Crumb 1', null, true);
+
+        foreach ($container->getCrumbs() as $index => $crumb) {
+            switch ($index) {
+                case 0:
+                    $this->assertEquals($crumb->getLabel(), 'Crumb 1');
+                    break;
+                case 1:
+                    $this->assertEquals($crumb->getLabel(), 'Crumb 2');
+                    break;
+                case 2:
+                    $this->assertEquals($crumb->getLabel(), 'Crumb 3');
+                    break;
+                case 3:
+                    $this->assertEquals($crumb->getLabel(), 'Crumb 4');
+                    break;
+            }
+        }
+    }
+
     public function makeContainer()
     {
         return new Container(new Crumb, new BasicRenderer);

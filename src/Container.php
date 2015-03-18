@@ -68,6 +68,8 @@ class Container implements Contract {
         } else {
             array_unshift($this->crumbs, $crumb);
         }
+
+        return $this;
     }
 
     /**
@@ -80,6 +82,8 @@ class Container implements Contract {
     public function append($label, $url)
     {
         $this->add($label, $url, true);
+
+        return $this;
     }
 
     /**
@@ -92,6 +96,8 @@ class Container implements Contract {
     public function prepend($label, $url)
     {
         $this->add($label, $url, false);
+
+        return $this;
     }
 
     /**
@@ -127,9 +133,9 @@ class Container implements Contract {
      */
     public function count()
     {
-        $this->build();
+        $crumbs = $this->getCrumbs();
 
-        return count($this->crumbs);
+        return count($crumbs);
     }
 
     /**

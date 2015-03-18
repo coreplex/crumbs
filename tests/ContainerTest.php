@@ -118,7 +118,7 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
         $container->append('Crumb 3')
                   ->prepend('Crumb 2')
                   ->add('Crumb 4', null, true)
-                  ->add('Crumb 1', null, true);
+                  ->add('Crumb 1', null, false);
 
         foreach ($container->getCrumbs() as $index => $crumb) {
             switch ($index) {

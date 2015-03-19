@@ -30,13 +30,6 @@ class Container implements Contract {
     protected $crumbs;
 
     /**
-     * The collection of preparations to be run on the container
-     * 
-     * @var array $preparations
-     */
-    protected $preparations = [];
-
-    /**
      * Make a new crumbs instance
      * 
      * @return void
@@ -108,7 +101,7 @@ class Container implements Contract {
      */
     public function prepare(Closure $closure)
     {
-        $this->addPreparation($closure);
+        $closure($this);
 
         return $this;
     }
@@ -124,6 +117,16 @@ class Container implements Contract {
         $this->build();
 
         return $this->crumbs;
+    }
+
+    /**
+     * Return all crumbs
+     * 
+     * @return array
+     */
+    public function crumbs()
+    {
+        return $this->getCrumbs();
     }
 
     /**
@@ -167,30 +170,6 @@ class Container implements Contract {
     protected function newCrumb()
     {
         return new $this->crumb;
-    }
-
-    /**
-     * Run all non-run preparations before performing any information functions
-     * 
-     * @return void
-     */
-    protected function build()
-    {
-        foreach ($this->preparations as $key => $preparation) {
-            $preparation($this);
-            unset($this->preparations[$key]);
-        }
-    }
-
-    /**
-     * Add a preparation closure to the crumbs instance
-     * 
-     * @param  Closure $closure
-     * @return void
-     */
-    protected function addPreparation(Closure $closure)
-    {
-        $this->preparations[] = $closure;
     }
 
 }

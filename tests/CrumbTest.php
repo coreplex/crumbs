@@ -88,6 +88,13 @@ class CrumbsTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($crumb->hasLabel());
     }
 
+    public function testFluentGettersRetrieveSameResults()
+    {
+        $crumb = $this->makeCrumb()->setLabel('Google')->setUrl('//www.google.com');
+        $this->assertEquals($crumb->getLabel(), $crumb->label());
+        $this->assertEquals($crumb->getUrl(), $crumb->url());
+    }
+
     public function makeCrumb()
     {
         return new Crumb;

@@ -138,6 +138,48 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
         }
     }
 
+    public function testAppendWorksInConjunctionWithPrepareAppends()
+    {
+        $container = $this->makeContainer();
+
+        $container->prepare(function($crumbs)
+        {
+            $crumbs->append('Crumb 1');
+            $crumbs->append('Crumb 2');
+        });
+
+        $container->append('Crumb 3');
+
+        foreach ($container->getCrumbs() as $key => $crumb) {
+            switch ($key) {
+                case 0:
+                    $this->assertEquals('Crumb 1', $crumb->getLabel());
+                    break;
+                case 1:
+                    $this->assertEquals('Crumb 2', $crumb->getLabel());
+                    break;
+                case 2:
+                    $this->assertEquals('Crumb 3', $crumb->getLabel());
+                    break;
+            }
+        }
+    }
+
+    public function testFluentGetterRetrievesSameResult()
+    {
+        $container = $this->makeContainer();
+
+        $container->prepare(function($crumbs)
+        {
+            $crumbs->append('Crumb 1');
+            $crumbs->append('Crumb 2');
+        });
+
+        $container->append('Crumb 3');
+
+        $this->assertEquals($container->getCrumbs(), $container->crumbs());
+    }
+
     public function makeContainer()
     {
         return new Container(new Crumb, new BasicRenderer);

@@ -47,6 +47,13 @@ interface Container {
     public function getCrumbs();
 
     /**
+     * Return all crumbs
+     * 
+     * @return array
+     */
+    public function crumbs();
+
+    /**
      * Return how many crumbs are in the container
      * 
      * @return integer

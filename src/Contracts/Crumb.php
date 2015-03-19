@@ -10,6 +10,13 @@ interface Crumb {
     public function getLabel();
 
     /**
+     * Retrieve the breadcrumb label
+     * 
+     * @return string
+     */
+    public function label();
+
+    /**
      * Whether or not this breadcrumb has a label
      * 
      * @return boolean
@@ -22,6 +29,13 @@ interface Crumb {
      * @return string
      */
     public function getUrl();
+
+    /**
+     * Retrieve the breadcrumb URL
+     * 
+     * @return string
+     */
+    public function url();
 
     /**
      * Whether or not this breadcrumb has a URL

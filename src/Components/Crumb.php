@@ -127,6 +127,16 @@ class Crumb implements Contract {
     }
 
     /**
+     * Retrieve whether or not the breadcrumb is the current one
+     * 
+     * @return boolean
+     */
+    public function current()
+    {
+        return $this->isCurrent();
+    }
+
+    /**
      * Sets the breadcrumb to be the current location
      *
      * @return $this

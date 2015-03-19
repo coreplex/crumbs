@@ -68,6 +68,13 @@ interface Crumb {
     public function isCurrent();
 
     /**
+     * Retrieve whether or not the breadcrumb is the current one
+     * 
+     * @return boolean
+     */
+    public function current();
+
+    /**
      * Sets the breadcrumb to be the current location
      *
      * @return  void

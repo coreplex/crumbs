@@ -88,11 +88,27 @@ class CrumbsTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($crumb->hasLabel());
     }
 
+    public function testAllSettersChain()
+    {
+        $crumb = $this->makeCrumb()->setLabel('Google')->setUrl('//www.google.com')->setNotCurrent();
+ 
+        $this->assertEquals($crumb->getLabel(), 'Google');
+        $this->assertEquals($crumb->getUrl(), '//www.google.com');
+        $this->assertEquals($crumb->isCurrent(), false);
+
+        $crumb->setLabel('Yahoo')->setCurrent()->setUrl('//www.yahoo.com');
+
+        $this->assertEquals($crumb->getLabel(), 'Yahoo');
+        $this->assertEquals($crumb->getUrl(), '//www.yahoo.com');
+        $this->assertEquals($crumb->isCurrent(), true);
+    }
+
     public function testFluentGettersRetrieveSameResults()
     {
         $crumb = $this->makeCrumb()->setLabel('Google')->setUrl('//www.google.com');
         $this->assertEquals($crumb->getLabel(), $crumb->label());
         $this->assertEquals($crumb->getUrl(), $crumb->url());
+        $this->assertEquals($crumb->isCurrent(), $crumb->current());
     }
 
     public function makeCrumb()

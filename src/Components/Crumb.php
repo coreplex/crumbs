@@ -129,21 +129,25 @@ class Crumb implements Contract {
     /**
      * Sets the breadcrumb to be the current location
      *
-     * @return  void
+     * @return $this
      */
     public function setCurrent()
     {
         $this->current = true;
+
+        return $this;
     }
 
     /**
      * Sets the breadcrumb to not be the current location
      * 
-     * @return  void
+     * @return $this
      */
     public function setNotCurrent()
     {
         $this->current = false;
+
+        return $this;
     }
 
 }

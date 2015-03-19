@@ -113,8 +113,6 @@ class Container implements Contract {
      */
     public function getCrumbs()
     {
-        // Run any preparations before retrieving the crumbs
-        $this->build();
 
         return $this->crumbs;
     }
@@ -148,9 +146,6 @@ class Container implements Contract {
      */
     public function render($makeLastCrumbCurrent = true)
     {
-        // Run any preparations before render
-        $this->build();
-
         if ($this->count() > 0 && $makeLastCrumbCurrent) {
             $lastCrumb = array_pop($this->crumbs);
 

@@ -48,7 +48,7 @@ interface Crumb {
      * Set the label of the breadcrumb
      * 
      * @param  string $url
-     * @return void
+     * @return $this
      */
     public function setLabel($label);
 
@@ -56,7 +56,7 @@ interface Crumb {
      * Set the URL of the breadcrumb
      * 
      * @param  string $url
-     * @return void
+     * @return $this
      */
     public function setUrl($url);
 

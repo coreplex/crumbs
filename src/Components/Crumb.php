@@ -94,22 +94,26 @@ class Crumb implements Contract {
      * Set the label of the breadcrumb
      * 
      * @param  string $url
-     * @return void
+     * @return $this
      */
     public function setLabel($label)
     {
         $this->label = $label;
+
+        return $this;
     }
 
     /**
      * Set the URL of the breadcrumb
      * 
      * @param  string $url
-     * @return void
+     * @return $this
      */
     public function setUrl($url)
     {
         $this->url = $url;
+
+        return $this;
     }
 
     /**

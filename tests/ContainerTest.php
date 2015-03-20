@@ -180,6 +180,18 @@ class ContainerTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($container->getCrumbs(), $container->crumbs());
     }
 
+    public function testContainerCanBeCastToStringForShorterRender()
+    {
+        $container = $this->makeContainer();
+
+        $container->prepare(function($crumbs)
+        {
+            $crumbs->append('Crumb 1');
+        });
+
+        $this->assertInternalType('string', (string) $container);
+    }
+
     public function makeContainer()
     {
         return new Container(new Crumb, new BasicRenderer);

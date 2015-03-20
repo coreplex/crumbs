@@ -167,4 +167,14 @@ class Container implements Contract {
         return new $this->crumb;
     }
 
+    /**
+     * Render the breadcrumbs
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->render();
+    }
+
 }

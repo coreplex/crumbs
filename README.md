@@ -53,13 +53,20 @@ Rendering The Breadcrumbs
 The basic renderer provided will return a simple list-based navigation string. This can be invoked through the main container class by just calling the `render` method.
 
 ```php
-$container->render();
+echo $container->render();
 ```
 
 The render method causes the last breadcrumb to be active by default. To disable this behaviour, pass false as the first parameter when calling render.
 
 ```php
-$container->render(false);
+echo $container->render(false);
+```
+
+The container can also be rendered by simply echoing out the class, as it will
+be implicitly type-cast to a string.
+
+```php
+echo $container;
 ```
 
 Retrieving The Breadcrumbs and the Crumb Component

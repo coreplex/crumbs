@@ -4,11 +4,13 @@ Framework agnostic breadcrumb container
 Installation via composer
 -------------------------
 
+The package requires PHP 5.4+, includes a Laravel 5 Service Provider/Facade for quick integration, and abides the FIG standard PSR-4, allowing for a consistent codebase. All Coreplex packages follow these set standards. The repository is also fully unit tested through and continuously integrated through use of [Travis CI](https://travis-ci.org/coreplex/crumbs).
+
 To install Crumbs via composer, simply add it to your composer.json file
 
 ```json
 "require": {
-    "coreplex/crumbs": "1.0.*"
+    "coreplex/crumbs": "~1.0"
 },
 ```
 
@@ -58,6 +60,52 @@ The render method causes the last breadcrumb to be active by default. To disable
 
 ```php
 $container->render(false);
+```
+
+Retrieving The Breadcrumbs and the Crumb Component
+--------------------------------------------------
+
+If you are going to be handling breadcrumbs from the container, you will want to access the numerous properties on the class. To do this, you can use the fluent attribute methods
+
+```php
+$container->append('The Website', '//www.website.com');
+
+foreach ($container->crumbs() as $crumb) {
+    var_dump($crumb->label()); // returns 'The Website'
+    var_dump($crumb->url()); // returns '//www.website.com'
+    var_dump($crumb->current()); // returns true
+}
+```
+
+There are also respective setters and isSetters for each of the attributes on the class
+
+```php
+// Append an empty breadcrumb to the container
+$container->append();
+
+foreach ($container->crumbs() as $crumb) {
+    var_dump($crumb->label()); // returns null
+
+    if ( ! $crumb->hasLabel()) {
+        $crumb->setLabel('The Website')
+    }
+
+    var_dump($crumb->url()); // returns null
+
+    if ( ! $crumb->hasUrl()) {
+        $crumb->setUrl('//www.website.com')
+    }
+
+    var_dump($crumb->current()); // returns true
+
+    if ( ! $crumb->current()) {
+        $crumb->setCurrent();
+    }
+
+    $crumb->setNotCurrent();
+
+    var_dump($crumb->current()); // returns false
+}
 ```
 
 Laravel 5 Support

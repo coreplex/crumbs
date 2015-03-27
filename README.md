@@ -1,4 +1,4 @@
-# Crumbs [![Build Status](https://travis-ci.org/coreplex/crumbs.svg?branch=master)](https://travis-ci.org/coreplex/crumbs)
+# Crumbs [![Build Status](https://travis-ci.org/coreplex/crumbs.svg?branch=master)](https://travis-ci.org/coreplex/crumbs) [![Coverage Status](https://coveralls.io/repos/coreplex/crumbs/badge.svg)](https://coveralls.io/r/coreplex/crumbs)
 Framework agnostic breadcrumb container
 
 Installation via composer

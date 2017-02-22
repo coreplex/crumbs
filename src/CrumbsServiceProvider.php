@@ -71,8 +71,7 @@ class CrumbsServiceProvider extends ServiceProvider {
      */
     public function registerRenderer()
     {
-        $this->app['Coreplex\Crumbs\Contracts\Renderer'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('Coreplex\Crumbs\Contracts\Renderer', function($app) {
             return (new ReflectionClass($app['config']['crumbs']['renderer']))->newInstanceArgs([$app['view']]);
         });
     }
@@ -84,8 +83,7 @@ class CrumbsServiceProvider extends ServiceProvider {
      */
     public function registerCrumb()
     {
-        $this->app['Coreplex\Crumbs\Contracts\Crumb'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('Coreplex\Crumbs\Contracts\Crumb', function($app) {
             return new $app['config']['crumbs']['crumb'];
         });
     }
@@ -97,9 +95,9 @@ class CrumbsServiceProvider extends ServiceProvider {
      */
     public function registerContainer()
     {
-        $this->app['Coreplex\Crumbs\Contracts\Container'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('Coreplex\Crumbs\Contracts\Container', function($app) {
             $args = [$app['Coreplex\Crumbs\Contracts\Crumb'], $app['Coreplex\Crumbs\Contracts\Renderer']];
+            
             return (new ReflectionClass($app['config']['crumbs']['container']))->newInstanceArgs($args);
         });
     }
